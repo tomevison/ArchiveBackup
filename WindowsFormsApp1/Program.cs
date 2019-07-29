@@ -8,15 +8,14 @@ namespace WindowsFormsApp1
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+
         [STAThread]
         static void Main()
         {
+            Console.WriteLine("Starting application");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new HomeForm());
         }
     }
 }
