@@ -20,16 +20,12 @@ namespace WindowsFormsApp1
             tb_CustomerStoragePath.Text = settings.GetCustomerStoragePath();
         }
 
-        private void Button_SetCustomerRootDir_Click(object sender, EventArgs e)
-        {
-            ConfigSettings settings = new ConfigSettings();
-            settings.setRootCustomerDirPath(textBox_RootCustomerDirPath.Text);
-        }
-
-        private void Button_SetStorageDir_Click(object sender, EventArgs e)
+        private void Button_SaveStorageDir_Click(object sender, EventArgs e)
         {
             ConfigSettings settings = new ConfigSettings();
             settings.SetCustomerStoragePath(tb_CustomerStoragePath.Text);
+            settings.setRootCustomerDirPath(textBox_RootCustomerDirPath.Text);
         }
+
     }
 }

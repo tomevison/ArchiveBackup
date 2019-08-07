@@ -32,15 +32,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tb_CustomerStoragePath = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button_SetCustomerRootDir = new System.Windows.Forms.Button();
-            this.button_SetStorageDir = new System.Windows.Forms.Button();
+            this.button_SaveStorageDir = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox_RootCustomerDirPath
             // 
             this.textBox_RootCustomerDirPath.Location = new System.Drawing.Point(111, 6);
             this.textBox_RootCustomerDirPath.Name = "textBox_RootCustomerDirPath";
-            this.textBox_RootCustomerDirPath.Size = new System.Drawing.Size(258, 20);
+            this.textBox_RootCustomerDirPath.Size = new System.Drawing.Size(272, 20);
             this.textBox_RootCustomerDirPath.TabIndex = 0;
             // 
             // label1
@@ -56,7 +56,7 @@
             // 
             this.tb_CustomerStoragePath.Location = new System.Drawing.Point(111, 32);
             this.tb_CustomerStoragePath.Name = "tb_CustomerStoragePath";
-            this.tb_CustomerStoragePath.Size = new System.Drawing.Size(258, 20);
+            this.tb_CustomerStoragePath.Size = new System.Drawing.Size(272, 20);
             this.tb_CustomerStoragePath.TabIndex = 2;
             // 
             // label2
@@ -68,39 +68,39 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Storage Dir";
             // 
-            // button_SetCustomerRootDir
+            // button_SaveStorageDir
             // 
-            this.button_SetCustomerRootDir.Location = new System.Drawing.Point(375, 4);
-            this.button_SetCustomerRootDir.Name = "button_SetCustomerRootDir";
-            this.button_SetCustomerRootDir.Size = new System.Drawing.Size(75, 23);
-            this.button_SetCustomerRootDir.TabIndex = 4;
-            this.button_SetCustomerRootDir.Text = "Set";
-            this.button_SetCustomerRootDir.UseVisualStyleBackColor = true;
-            this.button_SetCustomerRootDir.Click += new System.EventHandler(this.Button_SetCustomerRootDir_Click);
+            this.button_SaveStorageDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_SaveStorageDir.Location = new System.Drawing.Point(308, 116);
+            this.button_SaveStorageDir.Name = "button_SaveStorageDir";
+            this.button_SaveStorageDir.Size = new System.Drawing.Size(75, 23);
+            this.button_SaveStorageDir.TabIndex = 5;
+            this.button_SaveStorageDir.Text = "Save";
+            this.button_SaveStorageDir.UseVisualStyleBackColor = true;
+            this.button_SaveStorageDir.Click += new System.EventHandler(this.Button_SaveStorageDir_Click);
             // 
-            // button_SetStorageDir
+            // label3
             // 
-            this.button_SetStorageDir.Location = new System.Drawing.Point(375, 30);
-            this.button_SetStorageDir.Name = "button_SetStorageDir";
-            this.button_SetStorageDir.Size = new System.Drawing.Size(75, 23);
-            this.button_SetStorageDir.TabIndex = 5;
-            this.button_SetStorageDir.Text = "Set";
-            this.button_SetStorageDir.UseVisualStyleBackColor = true;
-            this.button_SetStorageDir.Click += new System.EventHandler(this.Button_SetStorageDir_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(108, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(242, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "This will write entries to ArchiveBackup.Config.xml";
             // 
             // SetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 167);
-            this.Controls.Add(this.button_SetStorageDir);
-            this.Controls.Add(this.button_SetCustomerRootDir);
+            this.ClientSize = new System.Drawing.Size(395, 151);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button_SaveStorageDir);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_CustomerStoragePath);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_RootCustomerDirPath);
             this.Name = "SetupForm";
-            this.Text = "SetupForm";
+            this.Text = "Setup";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,7 +112,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_CustomerStoragePath;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button_SetCustomerRootDir;
-        private System.Windows.Forms.Button button_SetStorageDir;
+        private System.Windows.Forms.Button button_SaveStorageDir;
+        private System.Windows.Forms.Label label3;
     }
 }

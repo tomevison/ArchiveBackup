@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WindowsFormsApp1")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("ArchiveBackup")]
+[assembly: AssemblyDescription("Store KUKA archives into folders by date")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("WindowsFormsApp1")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2019")]
+[assembly: AssemblyCompany("Tom Evison Software")]
+[assembly: AssemblyProduct("ArchiveBackup")]
+[assembly: AssemblyCopyright("Copyright © Tom Evison 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
