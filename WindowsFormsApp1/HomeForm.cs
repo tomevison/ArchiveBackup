@@ -24,8 +24,6 @@ namespace WindowsFormsApp1
         {
             listView_Customers.AutoArrange = true;
             
-            
-
             // grab all the customer names from the selected root directory
             try
             {
@@ -77,6 +75,7 @@ namespace WindowsFormsApp1
                     try
                     {
                         ArchiveHandler archiveHandler = new ArchiveHandler(file);
+                        Console.WriteLine(archiveHandler);
                         StoreFile(archiveHandler);
                     }
                     catch (InvalidDataException ex)
@@ -84,7 +83,7 @@ namespace WindowsFormsApp1
                         return;
                     }
                 }
-                Console.WriteLine("Process completed successfully!");
+                Console.WriteLine("Process Complete.");
             }
         }
 
@@ -98,21 +97,21 @@ namespace WindowsFormsApp1
 
             // Try to create the directory.
             DirectoryInfo di = Directory.CreateDirectory(targetDir);
-            Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(targetDir));
 
             // Copy the archive into the target directory
             if(File.Exists(srcFile))
             {
                 try{
                     File.Copy(srcFile, targetFile);
-                    Console.WriteLine("The archive was coppied successfully at {0}.", Directory.GetCreationTime(targetFile));
+                    Console.WriteLine("The archive was coppied successfully at " + Directory.GetCreationTime(targetFile) + Environment.NewLine);
                 } catch (IOException e)
                 {
                     Console.WriteLine(e);
                     MessageBox.Show(e.Message);
                     return;
                 }
-            }            
+            }
+            Fin();
         }
 
         private void SetupToolStripMenuItem_Click(object sender, EventArgs e)
@@ -172,6 +171,52 @@ namespace WindowsFormsApp1
         private void Label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Panel1_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                if (listView_Customers.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Select Customer first.");
+                    return;
+                }
+
+                string[] filePaths = (string[])(e.Data.GetData(DataFormats.FileDrop));
+                foreach (string file in filePaths)
+                {
+                    try
+                    {
+                        ArchiveHandler archiveHandler = new ArchiveHandler(file);
+                        Console.WriteLine(archiveHandler);
+                        StoreFile(archiveHandler);
+                    }
+                    catch (InvalidDataException ex)
+                    {
+                        return;
+                    }
+                }
+                Fin();
+            }
+        }
+
+        private void Fin()
+        {
+            Console.WriteLine("Process Complete.");
+        }
+
+        private void Panel1_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Link;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+                
         }
     }
 }

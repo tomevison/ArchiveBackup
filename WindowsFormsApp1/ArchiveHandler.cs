@@ -40,7 +40,6 @@ namespace ArchiveBackup
                         if (entry.Name == "am.ini")
                         {
                             thisArchiveType = archiveTypes.krc_archive;
-                            Console.WriteLine("File Loaded: Archive");
                             using (var stream = entry.Open())
                             using (var reader = new StreamReader(stream))
                             {
@@ -69,7 +68,6 @@ namespace ArchiveBackup
             // handle KRCDiags
             if (this.fileName.Split('_')[0] == "KRCDiag") // if the filename starts with KRCDiag
             {
-                Console.WriteLine("File Loaded: KRCDiag");
                 thisArchiveType = archiveTypes.krc_diag;
 
                 // split up the filename
@@ -136,6 +134,18 @@ namespace ArchiveBackup
         private string getNewArchiveDirectoryName()
         {
             return null;
+        }
+
+        override
+        public string ToString()
+        {
+            string output;
+            output = "---------------------------" + Environment.NewLine +
+                "Name: " + this.fileName + Environment.NewLine +
+                "Type: " + this.thisArchiveType + Environment.NewLine +
+                "RSN:  " + this.IRSerialNr + Environment.NewLine +
+                "---------------------------";
+            return output;
         }
 
 

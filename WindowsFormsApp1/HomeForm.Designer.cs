@@ -38,8 +38,11 @@
             this.Customers = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_DragDrop = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -135,11 +138,34 @@
     "s below.\r\n\r\nSupported files:\r\n - KSS archives\r\n - KRCDiag\r\n - Sunrise Diags\r\n";
             this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
+            // panel1
+            // 
+            this.panel1.AllowDrop = true;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.lbl_DragDrop);
+            this.panel1.Location = new System.Drawing.Point(278, 180);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(266, 158);
+            this.panel1.TabIndex = 3;
+            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.Panel1_DragDrop);
+            this.panel1.DragOver += new System.Windows.Forms.DragEventHandler(this.Panel1_DragOver);
+            // 
+            // lbl_DragDrop
+            // 
+            this.lbl_DragDrop.AutoSize = true;
+            this.lbl_DragDrop.Location = new System.Drawing.Point(86, 69);
+            this.lbl_DragDrop.Name = "lbl_DragDrop";
+            this.lbl_DragDrop.Size = new System.Drawing.Size(84, 13);
+            this.lbl_DragDrop.TabIndex = 0;
+            this.lbl_DragDrop.Text = "Drop files here +";
+            // 
             // HomeForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 350);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listView_Customers);
             this.Controls.Add(this.menuStrip1);
@@ -150,6 +176,8 @@
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,6 +195,8 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lbl_DragDrop;
     }
 }
 
