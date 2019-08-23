@@ -115,7 +115,7 @@ namespace WindowsFormsApp1
         {
             // build source and target directorys
             string srcFile = archiveHandler.getPathToArchive();
-            string targetDir = RootCustomerDirPath +"\\"+ SelectedCustomer +"\\"+ storagePath +"\\" + archiveHandler.RobName + "\\" + archiveHandler.ArchiveDate;
+            string targetDir = RootCustomerDirPath +"\\"+ SelectedCustomer +"\\"+ storagePath +"\\" + archiveHandler.IRSerialNr + "_" + archiveHandler.RobName + "\\" + archiveHandler.ArchiveDate;
             string targetFile = targetDir + "\\" + archiveHandler.FileName;
 
             // Try to create the directory.
