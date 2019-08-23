@@ -34,6 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button_SaveStorageDir = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.checkBox_ShowConsole = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox_RootCustomerDirPath
@@ -82,17 +84,38 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(108, 55);
+            this.label3.Location = new System.Drawing.Point(108, 75);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(242, 13);
+            this.label3.Size = new System.Drawing.Size(242, 26);
             this.label3.TabIndex = 6;
-            this.label3.Text = "This will write entries to ArchiveBackup.Config.xml";
+            this.label3.Text = "This will write entries to ArchiveBackup.Config.xml\r\nReload application for chang" +
+    "es to take effect.";
+            // 
+            // checkBox_ShowConsole
+            // 
+            this.checkBox_ShowConsole.AutoSize = true;
+            this.checkBox_ShowConsole.Location = new System.Drawing.Point(111, 58);
+            this.checkBox_ShowConsole.Name = "checkBox_ShowConsole";
+            this.checkBox_ShowConsole.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_ShowConsole.TabIndex = 7;
+            this.checkBox_ShowConsole.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 59);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Show Console";
             // 
             // SetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(395, 151);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.checkBox_ShowConsole);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button_SaveStorageDir);
             this.Controls.Add(this.label2);
@@ -114,5 +137,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button_SaveStorageDir;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBox_ShowConsole;
+        private System.Windows.Forms.Label label4;
     }
 }

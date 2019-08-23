@@ -1,22 +1,44 @@
 ﻿using ArchiveBackup;
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class HomeForm : Form
     {
-        private string RootCustomerDirPath;
-        private string storagePath;
+        private Boolean ShowConsole;
         private string[] arrayOfCustomers;
-        private string SelectedCustomer = null;
+        private string SelectedCustomer, storagePath, RootCustomerDirPath = null;
+        [DllImport("kernel32.dll", EntryPoint = "GetStdHandle", SetLastError = true, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern IntPtr GetStdHandle(int nStdHandle);
+        [DllImport("kernel32.dll", EntryPoint = "AllocConsole", SetLastError = true, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern int AllocConsole();
+        private const int STD_OUTPUT_HANDLE = -11;
+        private const int MY_CODE_PAGE = 437;
 
         public HomeForm()
         {
             ReadConfigSettings();
+            showConsole();
             InitializeComponent();
             PopulateCustomerList();
+        }
+
+        private void showConsole()
+        {
+            if (ShowConsole)
+            {
+                AllocConsole();
+                IntPtr stdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+                Microsoft.Win32.SafeHandles.SafeFileHandle safeFileHandle = new Microsoft.Win32.SafeHandles.SafeFileHandle(stdHandle, true);
+                FileStream fileStream = new FileStream(safeFileHandle, FileAccess.Write);
+                System.Text.Encoding encoding = System.Text.Encoding.GetEncoding(MY_CODE_PAGE);
+                StreamWriter standardOutput = new StreamWriter(fileStream, encoding);
+                standardOutput.AutoFlush = true;
+                Console.SetOut(standardOutput);
+            }
         }
 
         // populate customer list from root directory in config
@@ -55,6 +77,7 @@ namespace WindowsFormsApp1
             ConfigSettings settings = new ConfigSettings();
             RootCustomerDirPath = settings.GetRootCustomerDirPath();
             storagePath = settings.GetCustomerStoragePath();
+            ShowConsole = settings.GetShowConsole();
         }
 
         // 
@@ -129,6 +152,7 @@ namespace WindowsFormsApp1
             listView_Customers.Items.Clear();
             ReadConfigSettings();
             PopulateCustomerList();
+            showConsole();
         }
 
         // quit application
@@ -137,9 +161,9 @@ namespace WindowsFormsApp1
             System.Environment.Exit(0);
         }
 
+        // update the selected cutomer when the user changes list collection
         private void ListView_Customers_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            // update the selected cutomer when the user changes list collection
             string previouslySelectedCustomer;
             previouslySelectedCustomer = SelectedCustomer;
             SelectedCustomer = listView_Customers.FocusedItem.Text;
@@ -150,11 +174,13 @@ namespace WindowsFormsApp1
 
         }
 
+        // open select achive window
         private void Btn_SelectArchive_Click(object sender, EventArgs e)
         {
             selectArchiveFile();
         }
 
+        // select achive if enter is pressed while customer selected
         private void ListView_Customers_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)
@@ -166,11 +192,6 @@ namespace WindowsFormsApp1
         private void ListView_Customers_DoubleClick(object sender, EventArgs e)
         {
             selectArchiveFile();
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Panel1_DragDrop(object sender, DragEventArgs e)
@@ -201,11 +222,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void Fin()
-        {
-            Console.WriteLine("Process Complete.");
-        }
-
         private void Panel1_DragOver(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -216,7 +232,14 @@ namespace WindowsFormsApp1
             {
                 e.Effect = DragDropEffects.None;
             }
-                
+
         }
+
+        private void Fin()
+        {
+            Console.WriteLine("Process Complete.");
+        }
+
+
     }
 }

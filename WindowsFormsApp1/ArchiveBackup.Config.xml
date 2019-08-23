@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ArchiveBackup>
   <Configuration>
-    <RootCustomerDirPath>S:\1 Customers</RootCustomerDirPath>
-    <CustomerStoragePath>Service\Robot Backups</CustomerStoragePath>
+    <RootCustomerDirPath>S:\1 Customers</RootCustomerDirPath>         <!-- path to root directory containing all customer folders, eg: 'S:\Customers' -->
+    <CustomerStoragePath>Service\Robot Backups</CustomerStoragePath>  <!-- the folder path under the customer where you wish to store the archives -->
+    <ShowConsole>TRUE</ShowConsole>                                   <!-- do you wish to show the terminal output in addition to the windows form? -->
   </Configuration>
 </ArchiveBackup>

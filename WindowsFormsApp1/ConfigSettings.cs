@@ -50,5 +50,38 @@ namespace WindowsFormsApp1
             xmlFile.Save(@"./ArchiveBackup.Config.xml");
             return true;
         }
+
+        public Boolean GetShowConsole()
+        {
+            xmlFile = XDocument.Load(@"./ArchiveBackup.Config.xml");
+            var query = from c in xmlFile.Root.Descendants("Configuration") select c.Element("ShowConsole").Value;
+            xmlFile.Save(@"./ArchiveBackup.Config.xml");
+            if (query.First()=="TRUE")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Boolean SetShowConsole(Boolean selectedShowConsole)
+        {
+            string trueOrFalse = null;
+            if (selectedShowConsole)
+            {
+                trueOrFalse = "TRUE";
+            }
+            else
+            {
+                trueOrFalse = "FALSE";
+            }
+            xmlFile = XDocument.Load(@"./ArchiveBackup.Config.xml");
+            var existing = xmlFile.Descendants("Configuration").FirstOrDefault();
+            existing.Element("ShowConsole").Value = trueOrFalse;
+            xmlFile.Save(@"./ArchiveBackup.Config.xml");
+            return true;
+        }
     }
 }

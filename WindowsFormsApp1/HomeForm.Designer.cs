@@ -136,7 +136,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "1. Select a customer\r\n2. Press enter to select Archive, or\r\nDrag and drop archive" +
     "s below.\r\n\r\nSupported files:\r\n - KSS archives\r\n - KRCDiag\r\n - Sunrise Diags\r\n";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // panel1
             // 

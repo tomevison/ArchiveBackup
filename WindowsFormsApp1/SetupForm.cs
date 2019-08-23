@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
             ConfigSettings settings = new ConfigSettings();
             textBox_RootCustomerDirPath.Text = settings.GetRootCustomerDirPath();
             tb_CustomerStoragePath.Text = settings.GetCustomerStoragePath();
+            checkBox_ShowConsole.Checked = settings.GetShowConsole();
         }
 
         private void Button_SaveStorageDir_Click(object sender, EventArgs e)
@@ -25,7 +26,7 @@ namespace WindowsFormsApp1
             ConfigSettings settings = new ConfigSettings();
             settings.SetCustomerStoragePath(tb_CustomerStoragePath.Text);
             settings.setRootCustomerDirPath(textBox_RootCustomerDirPath.Text);
+            settings.SetShowConsole(checkBox_ShowConsole.Checked);
         }
-
     }
 }
