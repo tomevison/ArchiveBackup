@@ -45,7 +45,20 @@ namespace WindowsFormsApp1
         private void PopulateCustomerList()
         {
             listView_Customers.AutoArrange = true;
+            // check customer directory exists
+            try
+            {
+                arrayOfCustomers = Directory.GetDirectories(RootCustomerDirPath);
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                MessageBox.Show("Customer path not found, modify 'RootCustomerDirPath' in ArchiveBackup.Config.xml \n" +
+                    "Configured Path: " + RootCustomerDirPath, "Error opening Customer Direcotry", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                System.Diagnostics.Process.Start(@".\ArchiveBackup.Config.xml"); // open the config file
+                System.Environment.Exit(0);
+            }
             
+
             // grab all the customer names from the selected root directory
             try
             {
