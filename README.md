@@ -1,5 +1,5 @@
 # ArchiveBackup
-Application for storing KUKA archives under a Root customer directory.
+Windows forms Application for storing KUKA Robot archives under a root customer directory.
 
 Stores the zipped archive file under the selected directory as:
 
